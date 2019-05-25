@@ -4,58 +4,44 @@
   log type:  text
  opened on:  24 May 2019, 22:18:25
 
+Analyzing the factors that contribute to an individuals expected wage. Generating graphs and regression results usings OLS and instrumental variable analysis
+
 . *(17 variables, 2010 observations pasted into data editor)
 
 . *Analyzing how wages and logarithmic wages are affected by education, experience, race etc.
-
-. 
+ 
 . *Data contains over 2000 observations in year 1992
-
-. 
 . *Generating variables
 
 . 
 . gen log_wage = log(wage)
 
-. 
 . gen age = 1992-yrbirth
 
-. 
 . gen married = curmar==1
 
-. 
 . gen white = race==0
 
 . 
 . *To analyze the effect of father's education on wage; must drop observations where feduc is not observed
-
-. 
 . drop if feduc == .
 (89 observations deleted)
 
-. 
 . *Distribution graphs
 
-. 
 . graph pie, over(race) title(Distribution of Race)
 
-. 
 . graph bar (count), over(school) title(Distribution of Years of Schooling)
 
-. 
 . twoway (scatter log_wage school), title(Years of Schooling and Log Wage)
 
-. 
 . graph save Graph "H:\YearsOfSchooling_LogWage_WRR(4).gph"
 (file H:\YearsOfSchooling_LogWage_WRR(4).gph saved)
 
 . 
 . *Regression Analysis
 
-. 
 . *Regressing wage; (1) school, (2) school and experience, (3) school experience and fathers education
-
-. 
 . regress wage school
 
       Source |       SS           df       MS      Number of obs   =     1,921
@@ -232,8 +218,7 @@
 . *Running an instrumental variable analysis
 
 . *Hypothesis: Years of schooling is correlated with ability, which is unobserved in the data
-
-. *To get rid of omitted variable bias- instrument school with month of birth
+ *To get rid of omitted variable bias- instrument school with month of birth
 
 . ivreg log_wage (school=mnbirth)
 
@@ -349,24 +334,12 @@ Instrumental variables (2SLS) regression
 Instrumented:  school
 Instruments:   age feduc white married mnbirth
 ------------------------------------------------------------------------------
-
-. 
+ 
 . *Additional graphs
-
 . graph pie, over(feduc) title (Distribution of Father's education)
-
-. graph save Graph "H:\WageRegressionResults__2_FathersEduc.gph"
-(file H:\WageRegressionResults__2_FathersEduc.gph saved)
-
 . twoway (scatter wage age), title (Wage and Age)
 
-. graph save Graph "H:\WageAndAge__2.gph"
-(file H:\WageAndAge__2.gph saved)
-
 . graph pie, over(majocc)
-
-. graph save Graph "H:\PieChartMajor__2.gph"
-(file H:\PieChartMajor__2.gph saved)
 
 . *Analyze through interpreting coefficients and considering t-statistics
 
