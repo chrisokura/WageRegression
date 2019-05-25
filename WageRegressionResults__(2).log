@@ -13,7 +13,6 @@ Analyzing the factors that contribute to an individuals expected wage. Generatin
 . *Data contains over 2000 observations in year 1992
 . *Generating variables
 
-. 
 . gen log_wage = log(wage)
 
 . gen age = 1992-yrbirth
@@ -21,8 +20,7 @@ Analyzing the factors that contribute to an individuals expected wage. Generatin
 . gen married = curmar==1
 
 . gen white = race==0
-
-. 
+ 
 . *To analyze the effect of father's education on wage; must drop observations where feduc is not observed
 . drop if feduc == .
 (89 observations deleted)
