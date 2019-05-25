@@ -1,0 +1,5 @@
+# WageRegression
+This study analyzes how wages are affected by a number of factors including years of schooling, experience, race, parents'education and more
+Regression analysis shows that years of schooling, father's education, and job tenure are positively correlated with age, as expected
+Graphs are devloped to show the distribution of the variables studied
+Instrumental variable analysis accounts tests the hypothesis that years of schooling is correlated with ability, which is unobserved
